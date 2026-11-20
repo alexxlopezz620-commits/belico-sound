@@ -1,0 +1,352 @@
+/* =====================================================
+   PLANTILLA MUSICAL - style.css  (versión RESPONSIVA)
+   Aquí cambias colores y tamaños. Todo lo de arriba (:root)
+   es lo más fácil de modificar.
+   Se adapta a: celular, tablet y computadora.
+   ===================================================== */
+
+/* ---------- 1. COLORES Y MEDIDAS (cámbialos a tu gusto) ---------- */
+:root {
+  --fondo: #1c1233;        /* color de fondo de toda la página */
+  --tarjeta: #2a1d4a;      /* fondo de tarjetas, menú y reproductor */
+  --texto: #fff4e0;        /* color del texto */
+  --texto-suave: #c9bde6;  /* texto secundario (artista, tiempo) */
+  --coral: #ff5c7a;        /* color de acento 1 */
+  --sol: #ffc93c;          /* color de acento 2 (botón play) */
+  --menta: #46e3b7;        /* color de acento 3 (hover) */
+  --violeta: #7b5cff;      /* color de acento 4 (bordes) */
+  --menu-cerrado: 68px;    /* ancho del menú cuando está cerrado (computadora) */
+  --menu-abierto: 230px;   /* ancho del menú al pasar el mouse (computadora) */
+  --barra-menu: 56px;      /* alto del menú de arriba (celular y tablet) */
+  --radio: 18px;           /* qué tan redondeadas son las tarjetas */
+}
+
+
+/* ---------- 2. BASE ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  line-height: 1.4;
+  overflow-x: hidden;            /* nunca scroll horizontal */
+}
+img, video { max-width: 100%; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid var(--menta); outline-offset: 2px; }
+
+/* Imágenes: si no pones foto se ve este degradado (así nunca queda vacío) */
+.cover, .avatar, .perfil {
+  background-image: var(--img, none), linear-gradient(135deg, var(--coral), var(--violeta));
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- 3. MENÚ LATERAL (computadora: se abre al pasar el mouse) ---------- */
+.menu {
+  position: fixed; top: 0; bottom: 0; left: 0;
+  width: var(--menu-cerrado);
+  background: var(--tarjeta);
+  border-right: 3px solid var(--coral);
+  padding: 14px 10px;
+  display: flex; flex-direction: column; gap: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 50;
+  transition: width .3s ease;
+}
+.menu:hover, .menu:focus-within { width: var(--menu-abierto); }
+.menu a {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px; border-radius: 14px;
+  color: var(--texto); text-decoration: none; white-space: nowrap;
+}
+.menu a:hover { background: var(--fondo); }
+.menu .icono { font-size: 1.4rem; width: 28px; text-align: center; flex-shrink: 0; }
+.menu .icono-img { width: 30px; height: 30px; object-fit: contain; flex-shrink: 0; }
+.menu .texto { opacity: 0; transition: opacity .2s; }
+.menu:hover .texto, .menu:focus-within .texto { opacity: 1; }
+.menu .logo { font-weight: 800; font-size: 1.15rem; color: var(--sol); margin-bottom: 14px; }
+
+/* Submenú de artistas: se despliega hacia abajo dentro del menú */
+.grupo { position: relative; }
+.submenu {
+  display: none;
+  flex-direction: column; gap: 2px;
+  padding: 2px 0 6px 18px;
+}
+.submenu a { padding: 8px 10px; font-size: .95rem; }
+.grupo.abierto .submenu { display: flex; }
+
+/* ---------- 4. CONTENIDO PRINCIPAL ---------- */
+.contenido { margin-left: var(--menu-cerrado); padding: 0 24px 170px; }
+
+/* Barra de arriba: buscador + foto de perfil */
+.barra-superior {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 0; background: var(--fondo);
+}
+.buscador {
+  flex: 1; min-width: 0; max-width: 520px;
+  display: flex; align-items: center; gap: 10px;
+  background: var(--tarjeta);
+  border: 2px solid var(--violeta);
+  border-radius: 99px; padding: 10px 18px;
+}
+.buscador:focus-within { border-color: var(--menta); }
+.buscador input { flex: 1; min-width: 0; width: 100%; text-overflow: ellipsis; background: none; border: 0; outline: 0; }
+.buscador input::placeholder { color: var(--texto-suave); }
+.perfil { width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--sol); margin-left: auto; flex-shrink: 0; }
+
+/* Portada grande (hero) */
+.hero {
+  min-height: 250px;
+  margin: 8px 0 34px;
+  padding: 40px 32px;
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 12px;
+  border: 3px solid var(--sol);
+  border-radius: 28px;
+  box-shadow: 8px 8px 0 var(--coral);
+  background-image:
+    linear-gradient(90deg, rgba(28, 18, 51, .88), rgba(28, 18, 51, .1)),
+    var(--img, none),
+    linear-gradient(120deg, var(--violeta), var(--coral));
+  background-size: cover;
+  background-position: center;
+}
+.hero h1 { font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1; max-width: 14ch; overflow-wrap: break-word; }
+.hero p { max-width: 40ch; }
+.neon { text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055, 0 0 40px #ff0055; }
+.creditos { font-size: 1rem; font-weight: 700; }
+.btn {
+  align-self: flex-start;
+  background: var(--sol); color: var(--fondo);
+  border: 0; border-radius: 99px;
+  padding: 12px 26px; font-weight: 800;
+}
+.btn:hover { background: var(--menta); }
+
+/* Biografía del artista (texto + foto) - reemplaza la tabla de antes */
+.bio { display: flex; align-items: center; gap: 28px; }
+.bio p {
+  flex: 1; min-width: 0; max-width: none;
+  text-align: justify; hyphens: auto; overflow-wrap: break-word;
+}
+.foto-artista {
+  flex: 0 0 auto;
+  width: min(38%, 400px); height: auto;
+  object-fit: contain;   /* la foto se ve completa, sin recortes */
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+  border-radius: 16px;
+}
+
+/* Video del artista */
+.video {
+  display: block;
+  width: 100%; max-width: 840px; height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 12px;
+}
+.hero-video { align-items: center; justify-content: center; }
+
+/* Secciones */
+.seccion { margin-bottom: 38px; scroll-margin-top: 80px; }
+.seccion h2 { font-size: 1.5rem; margin-bottom: 16px; }
+.seccion h2::after {
+  content: ""; display: block;
+  width: 48px; height: 6px; margin-top: 6px;
+  background: var(--coral); border-radius: 99px;
+}
+
+/* Botones de categoría */
+.categorias { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.chip {
+  background: none; border: 2px solid var(--violeta);
+  border-radius: 99px; padding: 6px 18px;
+}
+.chip:hover { border-color: var(--menta); }
+.chip.activo { background: var(--sol); border-color: var(--sol); color: var(--fondo); font-weight: 700; }
+
+/* ---------- 5. TARJETAS DE CANCIONES ---------- */
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 22px;
+}
+.cancion {
+  position: relative; cursor: pointer;
+  background: var(--tarjeta);
+  border: 2px solid var(--violeta);
+  border-radius: var(--radio);
+  padding: 12px;
+  min-width: 0;
+  transition: transform .2s, box-shadow .2s;
+}
+.cancion:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--menta); }
+.cancion.sonando { border-color: var(--sol); box-shadow: 6px 6px 0 var(--sol); }
+.cancion .cover { aspect-ratio: 1; border-radius: 12px; position: relative; margin-bottom: 10px; }
+.cancion h3, .cancion p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cancion h3 { font-size: 1rem; }
+.cancion p { font-size: .85rem; color: var(--texto-suave); }
+.boton-play {
+  position: absolute; right: 8px; bottom: 8px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--sol); color: var(--fondo);
+  border: 2px solid var(--fondo);
+}
+.boton-play:hover { background: var(--menta); }
+.vacio { color: var(--texto-suave); padding: 20px 0; }
+
+/* ---------- 6. ARTISTAS ---------- */
+.artistas { display: flex; gap: 22px; overflow-x: auto; padding: 4px 4px 14px; }
+.artista { background: none; border: 0; text-align: center; flex-shrink: 0; width: 96px; }
+.artista .avatar {
+  display: block; width: 84px; height: 84px; margin: 0 auto 8px;
+  border-radius: 50%; border: 3px solid var(--coral);
+}
+.artista:hover .avatar { border-color: var(--menta); }
+
+/* ---------- 7. REPRODUCTOR (barra de abajo) ---------- */
+.reproductor {
+  position: fixed; left: var(--menu-cerrado); right: 0; bottom: 0; z-index: 40;
+  display: grid; grid-template-columns: 1fr 2fr 1fr;
+  align-items: center; gap: 16px;
+  padding: 12px 24px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: var(--tarjeta);
+  border-top: 3px solid var(--sol);
+}
+.ahora { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ahora .cover { width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0; }
+.ahora div:last-child { min-width: 0; }
+.ahora b, .ahora small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ahora small { color: var(--texto-suave); }
+.botones { display: flex; justify-content: center; align-items: center; gap: 14px; }
+.botones button { background: none; border: 0; font-size: 1.3rem; width: 40px; height: 40px; }
+.botones .principal { background: var(--sol); color: var(--fondo); border-radius: 50%; width: 48px; height: 48px; }
+.tiempo { display: flex; align-items: center; gap: 10px; font-size: .8rem; color: var(--texto-suave); }
+.tiempo input { flex: 1; min-width: 0; }
+.volumen { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.volumen button { background: none; border: 0; font-size: 1.2rem; }
+.volumen input { width: 110px; }
+
+/* Barras deslizantes (progreso y volumen) */
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  height: 8px; border-radius: 99px; cursor: pointer;
+  background: linear-gradient(90deg, var(--sol) var(--p, 0%), rgba(255, 255, 255, .2) var(--p, 0%));
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px;
+  border-radius: 50%; background: var(--coral); border: 3px solid var(--texto);
+}
+input[type=range]::-moz-range-thumb {
+  width: 12px; height: 12px;
+  border-radius: 50%; background: var(--coral); border: 3px solid var(--texto);
+}
+
+/* Mensaje de aviso (por ejemplo si no encuentra el audio) */
+.aviso {
+  position: fixed; left: 50%; bottom: 120px; transform: translateX(-50%);
+  background: var(--coral); color: var(--fondo);
+  padding: 10px 20px; border-radius: 99px; font-weight: 700;
+  z-index: 60; max-width: 90vw; text-align: center;
+}
+
+/* ---------- 8. RESPONSIVO ---------- */
+
+/* Computadora: el submenú se abre también al pasar el mouse */
+@media (min-width: 801px) {
+  .grupo:hover .submenu { display: flex; }
+  .menu:not(:hover):not(:focus-within) .submenu { display: none; }
+}
+
+/* Pantallas muy grandes */
+@media (min-width: 1500px) {
+  .lista { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+}
+
+/* Tablet y celular: el menú pasa ARRIBA como barra horizontal */
+@media (max-width: 800px) {
+  :root { --menu-abierto: 100%; }
+
+  .menu, .menu:hover, .menu:focus-within {
+    width: 100%; height: var(--barra-menu);
+    top: 0; right: 0; bottom: auto;
+    flex-direction: row; align-items: center; gap: 4px;
+    padding: 0 8px;
+    border-right: 0; border-bottom: 3px solid var(--coral);
+    overflow: visible;
+    transition: none;
+  }
+  .menu h2 { display: none; }
+  .menu > a, .menu .grupo { flex: 1 1 0; min-width: 0; }
+  .menu a { justify-content: center; padding: 8px 6px; gap: 8px; font-size: .95rem; }
+  .menu .texto { opacity: 1; overflow: hidden; text-overflow: ellipsis; }
+
+  /* el submenú cae justo debajo de la barra, ocupando todo el ancho */
+  .grupo { position: static; }
+  .submenu {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px;
+    max-height: calc(100vh - var(--barra-menu)); overflow-y: auto;
+    padding: 14px 12px;
+    background: var(--tarjeta);
+    border-bottom: 3px solid var(--coral);
+  }
+  .submenu a {
+    border: 2px solid var(--violeta); border-radius: 99px;
+    padding: 8px 16px; flex: 0 0 auto;
+  }
+
+  .contenido { margin-left: 0; padding: var(--barra-menu) 14px 190px; }
+  .barra-superior { top: var(--barra-menu); padding: 12px 0; }
+  .seccion { scroll-margin-top: 140px; }
+  .hero { padding: 28px 20px; min-height: 210px; }
+
+  /* biografía: foto arriba, texto abajo */
+  .bio { flex-direction: column-reverse; align-items: stretch; gap: 18px; }
+  .bio p { text-align: left; }
+  .foto-artista { width: 100%; max-width: 360px; align-self: center; }
+
+  .lista { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; }
+
+  .reproductor {
+    left: 0;
+    grid-template-columns: 1fr auto; gap: 8px 12px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .controles { display: contents; }
+  .botones { grid-column: 2; grid-row: 1; }
+  .tiempo { grid-column: 1 / -1; grid-row: 2; }
+  .volumen { display: none; }
+  .aviso { bottom: 150px; }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+  .menu a { font-size: .85rem; gap: 6px; padding: 8px 4px; }
+  .contenido { padding-left: 12px; padding-right: 12px; }
+  .hero { border-radius: 20px; box-shadow: 5px 5px 0 var(--coral); padding: 22px 16px; margin-bottom: 26px; }
+  .seccion h2 { font-size: 1.3rem; }
+  .lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cancion { padding: 8px; }
+  .boton-play { width: 38px; height: 38px; right: 6px; bottom: 6px; }
+  .chip { padding: 6px 14px; font-size: .9rem; }
+  .ahora .cover { width: 46px; height: 46px; }
+  .botones { gap: 6px; }
+}
+
+/* Celular en horizontal (poca altura): la barra de búsqueda ya no se queda fija */
+@media (max-height: 480px) and (orientation: landscape) {
+  .barra-superior { position: static; }
+  .contenido { padding-bottom: 130px; }
+  .hero { min-height: 160px; }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bélico Sound · Registro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<div class="card">
+
+  <div class="hero">
+    <span class="eyebrow">Hecho por: Alex Brayan López Gónzalez</span>
+    <h1>Únete a Bélico Sound</h1>
+    <p class="sub">Llena tus datos para crear tu cuenta. Revisa cada campo antes de presionar «Validar».</p>
+  </div>
+
+  <form id="form" novalidate>
+
+    <div class="field" id="f-nombre">
+      <label for="nombre">Nombre(s)</label>
+      <input id="nombre" type="text" placeholder="Ej. JOSÉ LUIS" autocomplete="given-name">
+      <div class="hint">Solo letras y espacios, máx. 100. Ejemplo: José Luis</div>
+      <div class="error-msg">Escribe tu nombre (solo letras, sin números ni símbolos).</div>
+    </div>
+
+    <div class="row">
+      <div class="field" id="f-paterno">
+        <label for="paterno">Apellido paterno</label>
+        <input id="paterno" type="text" placeholder="Ej. PÉREZ" autocomplete="family-name">
+        <div class="hint">Ejemplo: Pérez</div>
+        <div class="error-msg">Apellido paterno no válido.</div>
+      </div>
+      <div class="field" id="f-materno">
+        <label for="materno">Apellido materno</label>
+        <input id="materno" type="text" placeholder="Ej. GARCÍA">
+        <div class="hint">Ejemplo: García</div>
+        <div class="error-msg">Apellido materno no válido.</div>
+      </div>
+    </div>
+
+    <div class="field" id="f-fecha">
+      <label>Fecha de nacimiento</label>
+      <div class="fecha-box">
+        <select id="dia" aria-label="Día">
+          <option value="">Día</option>
+        </select>
+        <select id="mes" aria-label="Mes">
+          <option value="">Mes</option>
+          <option value="1">Enero</option>
+          <option value="2">Febrero</option>
+          <option value="3">Marzo</option>
+          <option value="4">Abril</option>
+          <option value="5">Mayo</option>
+          <option value="6">Junio</option>
+          <option value="7">Julio</option>
+          <option value="8">Agosto</option>
+          <option value="9">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+        <select id="anio" aria-label="Año">
+          <option value="">Año</option>
+        </select>
+      </div>
+      <div class="hint">Escoge día, mes y año. Ejemplo: 25 / Mayo / 2001</div>
+      <div class="error-msg">Escoge una fecha de nacimiento válida.</div>
+    </div>
+
+    <div class="field" id="f-tarjeta">
+      <label for="tarjeta">Número de tarjeta</label>
+      <input id="tarjeta" type="text" inputmode="numeric" placeholder="Ej. 4152 3698 0147 2580" autocomplete="cc-number">
+      <div class="hint">Máximo 16 dígitos (solo números). Ejemplo: 4152 3698 0147 2580</div>
+      <div class="error-msg">Escribe un número de tarjeta válido (13 a 16 dígitos).</div>
+    </div>
+
+    <div class="field" id="f-email">
+      <label for="email">Correo electrónico</label>
+      <div class="email-box">
+        <input id="email" type="text" inputmode="email" placeholder="ej. juan.perez25" autocapitalize="none" autocomplete="off">
+        <span class="arroba">@</span>
+        <select id="dominio" aria-label="Dominio de correo">
+          <option value="gmail.com">gmail.com</option>
+          <option value="hotmail.com">hotmail.com</option>
+          <option value="outlook.com">outlook.com</option>
+          <option value="yahoo.com">yahoo.com</option>
+          <option value="icloud.com">icloud.com</option>
+          <option value="live.com">live.com</option>
+        </select>
+      </div>
+      <div class="hint">Escribe solo la parte antes del @ y elige tu proveedor (gmail, hotmail, etc.) para evitar errores.</div>
+      <div class="error-msg">Usuario no válido (6 a 30 caracteres: letras, números, puntos, guiones).</div>
+    </div>
+
+    <button type="submit">Validar</button>
+  </form>
+
+  <div class="success" id="success">
+    <div class="check">✓</div>
+    <h2>¡Formulario enviado correctamente!</h2>
+    <p>Todos los datos fueron contestados de forma correcta.</p>
+    <div class="summary" id="summary"></div>
+    <a href="index.html" class="enlace-again"><button type="button" id="again">Ahora escucha la musica que mas te gusta</button></a>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

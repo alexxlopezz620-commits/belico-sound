@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rancho Sonoro</title>
+  <!-- Letra (necesita internet; si no hay, se usa una letra normal del sistema) -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!--
+  =====================================================
+  CÓMO ORGANIZAR TUS ARCHIVOS (todo en la misma carpeta):
+    index.html   <- este archivo
+    style.css
+    musica/      <- aquí guardas tus .mp3
+    img/         <- aquí guardas tus fotos (portadas, banner, artistas)
+  =====================================================
+-->
+
+<!-- =====================================================
+     1. MENÚ LATERAL
+     Se abre solo al pasar el mouse. Cada <a> es un botón del menú.
+     👉 AQUÍ VA: el logo/nombre de tu página y los enlaces a tus secciones.
+     Para cambiar el ícono, cambia el emoji. Para cambiar el nombre, cambia el texto.
+     ===================================================== -->
+<nav class="menu">
+  <h2><span class="texto">Regional Mexicano</span></h2>
+  <a href="index.html"><img class="icono-img" src="img_inicio.png" alt=""><span class="texto">Inicio</span></a>
+  <div class="grupo">
+    <a href="#" class="con" aria-expanded="false"><span class="icono">🎤</span><span class="texto">Artistas 🔻</span></a>
+    <div class="submenu" id="submenu">
+      <a href="Peso Pluma.html">Peso Pluma</a>
+      <a href="fuerza regida.html">Fuerza Regida</a>
+      <a href="tito.html">Tito Doble P</a>
+      <a href="junior.html">Junior H</a>
+      <a href="jasiel.html">Jasiel Núñes</a>
+      <a href="chuyin.html">Chuyín</a>
+      <a href="neton.html">Netón Vega</a>
+    </div>
+  </div>
+</nav>
+
+<main class="contenido">
+
+  <!-- =====================================================
+       3. PORTADA GRANDE (HERO)
+       👉 AQUÍ VA: un título principal, una frase corta y una imagen de fondo.
+       Imagen de fondo: cambia data-img="img/banner.jpg"
+       El botón reproduce la primera canción de la lista.
+       ===================================================== -->
+  <section class="hero" id="inicio" data-img="img/banner.jpg">
+    <h1 class="neon">Peso Pluma</h1>
+    <div class="bio">
+      <p>Peso Pluma (Hassan Emilio Kabande Laija, nacido el 15 de junio de 1999 en Zapopan, Jalisco) es un cantante y compositor mexicano consolidado como el máximo exponente de los corridos tumbados y la música regional mexicana a nivel internacional. Saltó a la fama mundial con éxitos como “Ella baila sola” y su sesión con Bizarrap, logrando hitos históricos como posicionar el género en el primer puesto de listas globales de Spotify y Billboard.<br> A lo largo de su carrera, ha fundado su propio sello discográfico (Double P Records), ha lanzado exitosos álbumes de estudio como Génesis y Éxodo, y ha sido galardonado con el Premio Grammy, consolidándose como un ícono cultural contemporáneo que fusiona la música tradicional con ritmos urbanos y colabora con grandes estrellas mundiales.</p>
+      <img class="foto-artista" src="img_peso pluma.jpg" alt="Foto de Peso Pluma">
+    </div>
+    <button class="btn" id="btnHero">▶ Reproducir</button>
+  </section> 
+  <!-- =====================================================
+       4. CANCIONES
+       👉 CATEGORÍAS: cada botón filtra las canciones. El nombre en data-categoria
+          debe ser IGUAL al data-categoria de las canciones que quieras en esa categoría.
+          (el botón "Todo" siempre muestra todas)
+       ===================================================== -->
+  <section class="seccion" id="canciones">
+    <h2>Canciones</h2>
+
+    
+
+    <!--
+      👉 CADA CANCIÓN es un bloque <article class="cancion"> (hay 6 de ejemplo).
+      Para AGREGAR una canción: copia un bloque completo y pégalo abajo.
+      Para QUITAR una: borra el bloque completo.
+      Lo que debes cambiar en cada bloque:
+        data-src       = ruta del audio, ejemplo "musica/mi-cancion.mp3"
+        data-img       = ruta de la portada, ejemplo "img/mi-portada.jpg"
+        data-categoria = categoría (debe coincidir con un botón de arriba)
+        <h3>           = nombre de la canción
+        <p>            = nombre del artista
+      Al hacer clic en la tarjeta (o en el botón ▶) se reproduce.
+    -->
+    <div class="lista" id="lista">
+
+      <article class="cancion" data-src="musica1_peso pluma.mp3" data-img="img1_peso pluma.jpg">
+        <div class="cover"><button class="boton-play" aria-label="Reproducir">▶</button></div>
+        <h3>Santal 33</h3>
+        <p>Peso Pluma</p>
+      </article>
+
+      <article class="cancion" data-src="musica2_peso pluma.mp3" data-img="img2_peso pluma.jpg">
+        <div class="cover"><button class="boton-play" aria-label="Reproducir">▶</button></div>
+        <h3>A.M.G</h3>
+        <p>Peso Pluma</p>
+      </article>
+
+      <article class="cancion" data-src="musica3_peso pluma.mp3" data-img="img3_peso pluma.jpg">
+        <div class="cover"><button class="boton-play" aria-label="Reproducir">▶</button></div>
+        <h3>Ella baila sola</h3>
+        <p>Peso Pluma</p>
+      </article>
+
+      <article class="cancion" data-src="musica4_peso pluma.mp3" data-img="img4_peso pluma.jpg">
+        <div class="cover"><button class="boton-play" aria-label="Reproducir">▶</button></div>
+        <h3>Daño</h3>
+        <p>Peso Pluma</p>
+      </article>
+
+      <article class="cancion" data-src="musica5_peso pluma.mp3" data-img="img5_peso pluma.jpg">
+        <div class="cover"><button class="boton-play" aria-label="Reproducir">▶</button></div>
+        <h3>P.R.C</h3>
+        <p>Peso Pluma</p>
+      </article>
+
+ 
+    </div>
+    <p class="vacio" id="vacio" hidden>No hay resultados. Prueba con otra palabra o categoría.</p>
+  </section>
+  <section class="hero hero-video" data-img="img/barner.jpg">
+    <video class="video" controls playsinline preload="metadata">
+      <source src="video_peso pluma.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+  </section>
+
+
+</main>
+
+<!-- =====================================================
+     6. REPRODUCTOR (barra de abajo)
+     No necesitas tocar nada aquí: muestra solo la canción que suena
+     (portada, nombre, artista) y tiene anterior, play/pausa, siguiente,
+     barra de progreso (puedes adelantar), volumen y silencio.
+     ===================================================== -->
+<footer class="reproductor">
+  <div class="ahora">
+    <div class="cover" id="pCover"></div>
+    <div><b id="pTitulo">Elige una canción</b><small id="pArtista">Artista</small></div>
+  </div>
+
+  <div class="controles">
+    <div class="botones">
+      <button id="btnPrev" aria-label="Anterior">⏮</button>
+      <button id="btnPlay" class="principal" aria-label="Reproducir o pausar">▶</button>
+      <button id="btnNext" aria-label="Siguiente">⏭</button>
+    </div>
+    <div class="tiempo">
+      <span id="tActual">0:00</span>
+      <input type="range" id="barra" min="0" max="100" step="0.1" value="0" aria-label="Progreso de la canción">
+      <span id="tTotal">0:00</span>
+    </div>
+  </div>
+
+  <div class="volumen">
+    <button id="btnMute" aria-label="Silenciar">🔊</button>
+    <input type="range" id="vol" min="0" max="100" value="70" aria-label="Volumen">
+  </div>
+</footer>
+
+<!-- Mensaje que aparece si no se encuentra un audio -->
+<div class="aviso" id="aviso" hidden></div>
+
+<!-- =====================================================
+     7. JAVASCRIPT (lo que hace que todo funcione)
+     No necesitas modificarlo para agregar canciones, fotos o categorías.
+     ===================================================== -->
+<script>
+const $  = (s, p = document) => p.querySelector(s);
+const $$ = (s, p = document) => [...p.querySelectorAll(s)];
+
+// --- Imágenes: toma cada data-img y lo usa como fondo ---
+$$('[data-img]').forEach(el => {
+  if (el.dataset.img) el.style.setProperty('--img', `url("${el.dataset.img}")`);
+});
+
+// --- Menú: tocar "Artistas" abre/cierra la lista (celular, tablet y compu) ---
+const grupo = $('.grupo');
+if (grupo) {
+  const enlaceArtistas = $('.con', grupo);
+  enlaceArtistas.addEventListener('click', e => {
+    e.preventDefault();
+    const abierto = grupo.classList.toggle('abierto');
+    enlaceArtistas.setAttribute('aria-expanded', abierto);
+  });
+  document.addEventListener('click', e => {           // tocar fuera lo cierra
+    if (!grupo.contains(e.target)) {
+      grupo.classList.remove('abierto');
+      enlaceArtistas.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// --- Variables ---
+const audio = new Audio();
+audio.volume = 0.7;
+const canciones = $$('.cancion');
+let actual = -1, categoria = 'todo', temporizador;
+
+const buscador = $('#buscador'), vacio = $('#vacio'), aviso = $('#aviso');
+const pTitulo = $('#pTitulo'), pArtista = $('#pArtista'), pCover = $('#pCover');
+const btnPlay = $('#btnPlay'), barra = $('#barra'), vol = $('#vol'), btnMute = $('#btnMute');
+const tActual = $('#tActual'), tTotal = $('#tTotal');
+
+// --- Funciones de ayuda ---
+const formato = t => isFinite(t) ? Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0') : '0:00';
+const pintar = input => input.style.setProperty('--p', (input.value / input.max * 100) + '%');
+
+function mostrarAviso(msg) {
+  aviso.textContent = msg;
+  aviso.hidden = false;
+  clearTimeout(temporizador);
+  temporizador = setTimeout(() => aviso.hidden = true, 4000);
+}
+
+
+
+// --- Reproductor ---
+function cargar(i) {
+  actual = i;
+  const c = canciones[i];
+  audio.src = c.dataset.src;
+  pTitulo.textContent = c.querySelector('h3').textContent;
+  pArtista.textContent = c.querySelector('p').textContent;
+  pCover.style.setProperty('--img', c.style.getPropertyValue('--img') || 'none');
+  audio.play().catch(() => {});
+  actualizarUI();
+}
+
+function alternar() {                       // play / pausa
+  if (actual < 0) {                         // si no hay canción elegida, pone la primera visible
+    const primera = canciones.findIndex(c => !c.hidden);
+    if (primera >= 0) cargar(primera);
+    return;
+  }
+  audio.paused ? audio.play().catch(() => {}) : audio.pause();
+}
+
+function mover(dir) {                       // 1 = siguiente, -1 = anterior
+  const visibles = canciones.filter(c => !c.hidden);
+  if (!visibles.length) return;
+  let k = visibles.indexOf(canciones[actual]);
+  k = k < 0 ? 0 : (k + dir + visibles.length) % visibles.length;
+  cargar(canciones.indexOf(visibles[k]));
+}
+
+function actualizarUI() {                   // cambia ▶ / ⏸ y resalta la tarjeta que suena
+  btnPlay.textContent = audio.paused ? '▶' : '⏸';
+  canciones.forEach((c, i) => {
+    const suena = i === actual;
+    c.classList.toggle('sonando', suena);
+    c.querySelector('.boton-play').textContent = (suena && !audio.paused) ? '⏸' : '▶';
+  });
+}
+
+// --- Eventos del audio ---
+audio.addEventListener('play', actualizarUI);
+audio.addEventListener('pause', actualizarUI);
+audio.addEventListener('ended', () => mover(1));
+audio.addEventListener('error', () => mostrarAviso('No se encontró el audio. Revisa la ruta en data-src.'));
+audio.addEventListener('loadedmetadata', () => tTotal.textContent = formato(audio.duration));
+audio.addEventListener('timeupdate', () => {
+  barra.value = audio.duration ? audio.currentTime / audio.duration * 100 : 0;
+  pintar(barra);
+  tActual.textContent = formato(audio.currentTime);
+});
+
+// --- Controles ---
+barra.addEventListener('input', () => {
+  if (audio.duration) audio.currentTime = barra.value / 100 * audio.duration;
+  pintar(barra);
+});
+vol.addEventListener('input', () => {
+  audio.volume = vol.value / 100;
+  audio.muted = false;
+  btnMute.textContent = vol.value == 0 ? '🔇' : '🔊';
+  pintar(vol);
+});
+btnMute.addEventListener('click', () => {
+  audio.muted = !audio.muted;
+  btnMute.textContent = audio.muted ? '🔇' : '🔊';
+});
+btnPlay.addEventListener('click', alternar);
+$('#btnHero').addEventListener('click', alternar);
+$('#btnNext').addEventListener('click', () => mover(1));
+$('#btnPrev').addEventListener('click', () => {
+  if (audio.currentTime > 3) audio.currentTime = 0; else mover(-1);
+});
+
+// --- Clic en una tarjeta: reproduce (o pausa si ya es la que suena) ---
+canciones.forEach((c, i) => c.addEventListener('click', () => i === actual ? alternar() : cargar(i)));
+
+
+
+
+
+
+pintar(barra);
+pintar(vol);
+</script>
+</body>
+</html>
